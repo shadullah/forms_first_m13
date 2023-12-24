@@ -3,32 +3,36 @@
 <html>
   <head>
     {% tailwind_css %}
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Form</title>
   </head>
   <body>
     <nav>
-        <div class="flex justify-between bg-orange-300 p-12">
-            <div>
-                <h1 class="text-3xl">//<>//</h1>
-            </div>
-            <div>
-                <ul class="flex">
-                    <li class="text-xl font-semibold text-white mx-6">Home</li>
-                    <li class="text-xl font-semibold text-white mx-6">About</li>
-                </ul>
-            </div>
+      <div class="flex justify-between bg-orange-300 p-12">
+        <div>
+          <h1 class="text-3xl">//<>//</h1>
         </div>
+        <div>
+          <ul class="flex">
+            <li class="text-xl font-semibold text-white mx-6">
+              <a href="{% url 'home' %}">Home</a>
+            </li>
+            <li class="text-xl font-semibold text-white mx-6">
+              <a href="{% url 'about' %}">About</a>
+            </li>
+            <li class="text-xl font-semibold text-white mx-6">
+              <a href="{% url 'login' %}">Login</a>
+            </li>
+          </ul>
+        </div>
+      </div>
     </nav>
 
-    {% block content %}
-
-    {% endblock %}
+    {% block content %} {% endblock %}
 
     <footer>
-        <h1>copyright reserved</h1>
+      <h1>copyright reserved</h1>
     </footer>
-
   </body>
 </html>
