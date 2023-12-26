@@ -19,8 +19,15 @@ def login(req):
     # return render(req, 'forms_first/login.html')
 
 def djangoForms(req):
-    form = contactForm(req.POST)
-    if form.is_valid():
-        print(form.cleaned_data)
-        
+    if req.method=='POST':
+        form = contactForm(req.POST, req.FILES)
+        if form.is_valid():
+            file = form.cleaned_data['file']
+            with open('./forms_first/upload/' + file.name, 'wb+') as destination:
+                for chunk in file.chunks():
+                    destination.write(chunk)
+            print(form.cleaned_data)
+            return render(req, './forms_first/django_Form.html', {'form': form})
+    else:
+        form=contactForm()
     return render(req, './forms_first/django_Form.html', {'form': form})
