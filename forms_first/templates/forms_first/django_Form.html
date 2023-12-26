@@ -1,5 +1,8 @@
 {% extends "base.html" %} {% block content %} {% load tailwind_filters %}
-<form method="post">
+
+<h1 class="text-3xl text-center text-blue-600 my-12 font-bold">Django forms</h1>
+
+<form method="post" class="max-w-sm mx-auto">
   {% csrf_token %} {{ form|crispy }}
   <button
     type="submit"
