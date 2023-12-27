@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from . forms import contactForm, studentData
+from . forms import contactForm, studentData, testing,passwordValidation
 
 # Create your views here.
 def home(req):
@@ -41,3 +41,22 @@ def studentForm(req):
         form=studentData()
     return render(req, './forms_first/django_form.html', {'form': form})
     
+
+def testing_validations(req):
+    if req.method=='POST':
+        form=testing(req.POST, req.FILES)
+        if form.is_valid():
+            print(form.cleaned_data)
+    else:
+        form=testing()
+    return render(req, './forms_first/django_form.html', {'form': form})
+
+
+def passwordValid(req):
+    if req.method=='POST':
+        form=passwordValidation(req.POST, req.FILES)
+        if form.is_valid():
+            print(form.cleaned_data)
+    else:
+        form=passwordValidation()
+    return render(req, './forms_first/django_form.html', {'form': form})
